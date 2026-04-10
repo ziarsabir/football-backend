@@ -3,6 +3,7 @@ import express from "express";
 import fetch from "node-fetch";
 import { parseStringPromise as parseXml } from "xml2js";
 import cors from "cors";
+import { insertNewsItem, getAllNews } from "./src/models/newsModel.js";
 
 const app = express();
 app.use(cors());
@@ -270,6 +271,11 @@ app.get("/api/news", async (req, res) => {
 
     // Sort newest first
     news.sort((a, b) => new Date(b.pubDate || 0) - new Date(a.pubDate || 0));
+    
+    // Insert into SQLite database
+    news.forEach((item) => {
+      insertNewsItem(item);
+    });
 
     res.json({ source, count: news.length, items: news });
   } catch (e) {
@@ -279,4 +285,18 @@ app.get("/api/news", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 4000;
+
+app.get("/api/saved-news", (req, res) => {
+  try {
+    const items = getAllNews();
+    res.json({
+      count: items.length,
+      items
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to load saved news" });
+  }
+});
+
 app.listen(PORT,"0.0.0.0", () => console.log(`News proxy on ${PORT}`));
