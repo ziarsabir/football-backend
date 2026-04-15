@@ -27,3 +27,14 @@ export function getAllNews() {
 
   return stmt.all();
 }
+
+// Gets news from database where source matches (e.g. "bbc" or "ESPN" etc.)
+export function getNewsBySource(source) {
+  const stmt = db.prepare(`
+    SELECT * FROM news
+    WHERE source = ?
+    ORDER BY datetime(pubDate) DESC
+  `);
+
+  return stmt.all(source);
+}
