@@ -18,4 +18,30 @@ db.exec(`
   )
 `);
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS standings (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    leagueId INTEGER NOT NULL,
+    season INTEGER NOT NULL,
+    rank INTEGER NOT NULL,
+    teamId INTEGER NOT NULL,
+    teamName TEXT NOT NULL,
+    teamLogo TEXT,
+    points INTEGER,
+    goalsDiff INTEGER,
+    played INTEGER,
+    win INTEGER,
+    draw INTEGER,
+    lose INTEGER,
+    form TEXT,
+    groupName TEXT,
+    status TEXT,
+    description TEXT,
+    goalsFor INTEGER,
+    goalsAgainst INTEGER,
+    updatedAt TEXT DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(leagueId, season, teamId)
+  )
+`);
+
 export default db;

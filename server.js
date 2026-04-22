@@ -1,7 +1,10 @@
 // server.js
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { getSavedNews, getLiveNews } from "./src/controllers/newsController.js";
+import { getStandings } from "./src/controllers/standingsController.js";
+
 
 const app = express();
 app.use(cors());
@@ -17,5 +20,7 @@ const PORT = process.env.PORT || 4000;
 
 // The route now delegates request handling to the controller, which keeps server.js clean and separates concerns.
 app.get("/api/saved-news", getSavedNews);
+
+app.get("/api/standings", getStandings);
 
 app.listen(PORT,"0.0.0.0", () => console.log(`News proxy on ${PORT}`));
