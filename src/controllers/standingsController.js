@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { insertOrReplaceStandingRow } from "../models/standingsModel.js";
+import { insertOrReplaceStandingRow, getStandingsFromDb } from "../models/standingsModel.js";
 
 const BASE_URL = "https://v3.football.api-sports.io";
 
@@ -56,5 +56,22 @@ export async function getStandings(req, res) {
   } catch (error) {
     console.error("Error fetching standings:", error);
     res.status(500).json({ error: "Failed to fetch standings" });
+  }
+}
+
+export function getSavedStandings(req, res) {
+  try {
+    const leagueId = req.query.league || 39;
+    const season = req.query.season || 2025;
+
+    const standings = getStandingsFromDb(leagueId, season);
+
+    res.json({
+      count: standings.length,
+      items: standings
+    });
+  } catch (error) {
+    console.error("Error reading saved standings:", error);
+    res.status(500).json({ error: "Failed to fetch saved standings" });
   }
 }

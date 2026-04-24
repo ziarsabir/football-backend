@@ -3,7 +3,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { getSavedNews, getLiveNews } from "./src/controllers/newsController.js";
-import { getStandings } from "./src/controllers/standingsController.js";
+import { getStandings, getSavedStandings } from "./src/controllers/standingsController.js";
 
 
 const app = express();
@@ -22,5 +22,6 @@ const PORT = process.env.PORT || 4000;
 app.get("/api/saved-news", getSavedNews);
 
 app.get("/api/standings", getStandings);
+app.get("/api/saved-standings", getSavedStandings);
 
 app.listen(PORT,"0.0.0.0", () => console.log(`News proxy on ${PORT}`));
