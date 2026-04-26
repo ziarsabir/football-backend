@@ -1,23 +1,21 @@
+import "dotenv/config";
 import fetch from "node-fetch";
-import { insertOrReplaceStandingRow, getStandingsFromDb } from "../models/standingsModel.js";
-import db from "../config/database.js";
+import { insertOrReplaceStandingRow } from "../src/models/standingsModel.js";
 
+const API_KEY = process.env.API_KEY;
 const BASE_URL = "https://v3.football.api-sports.io";
 
-// This route will: 
-// 1. fetch live standings, 2. save each team row into SQLite, 3. still return the API data to the frontend
+const headers = {
+  "X-RapidAPI-Key": API_KEY,
+  "X-RapidAPI-Host": "v3.football.api-sports.io",
+};
 
-export async function getStandings(req, res) {
+async function updateStandings() {
   try {
-    const API_KEY = process.env.API_KEY;
+    const leagueId = 39;
+    const season = 2025;
 
-    const headers = {
-        "X-RapidAPI-Key": API_KEY,
-        "X-RapidAPI-Host": "v3.football.api-sports.io",
-    };
-
-    const leagueId = req.query.league || 39;
-    const season = req.query.season || 2025;
+    console.log("Fetching latest standings...");
 
     const response = await fetch(
       `${BASE_URL}/standings?league=${leagueId}&season=${season}`,
@@ -48,31 +46,14 @@ export async function getStandings(req, res) {
         status: teamRow.status,
         description: teamRow.description,
         goalsFor: teamRow.all.goals.for,
-        goalsAgainst: teamRow.all.goals.against
+        goalsAgainst: teamRow.all.goals.against,
       });
     });
 
-    res.json(data);
-
+    console.log(`Saved ${standingsRows.length} standings rows to SQLite.`);
   } catch (error) {
-    console.error("Error fetching standings:", error);
-    res.status(500).json({ error: "Failed to fetch standings" });
+    console.error("Failed to update standings:", error);
   }
 }
 
-
-
-export function getStandingsFromDB(req, res) {
-  const { league = 39, season = 2025 } = req.query;
-
-  const rows = db.prepare(`
-    SELECT * FROM standings
-    WHERE leagueId = ? AND season = ?
-    ORDER BY rank ASC
-  `).all(league, season);
-
-  res.json({
-    count: rows.length, 
-    items: rows
-  });
-}
+updateStandings();
