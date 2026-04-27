@@ -60,4 +60,25 @@ db.exec(`
   )
 `);
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS team_fixtures (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    teamId INTEGER NOT NULL,
+    season INTEGER NOT NULL,
+    fixtureId INTEGER NOT NULL,
+    fixtureDate TEXT,
+    statusShort TEXT,
+    statusLong TEXT,
+    homeTeamId INTEGER,
+    homeTeamName TEXT,
+    awayTeamId INTEGER,
+    awayTeamName TEXT,
+    goalsHome INTEGER,
+    goalsAway INTEGER,
+    leagueName TEXT,
+    leagueCountry TEXT,
+    UNIQUE(teamId, season, fixtureId)
+  )
+`);
+
 export default db;

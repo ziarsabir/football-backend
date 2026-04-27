@@ -5,6 +5,7 @@ import cors from "cors";
 import { getSavedNews, getLiveNews } from "./src/controllers/newsController.js";
 import { getStandingsFromDB } from "./src/controllers/standingsController.js";
 import { getTeams, getTeamById } from "./src/controllers/teamsController.js";
+import { getTeamFixturesFromDB } from "./src/controllers/teamFixturesController.js";
 
 
 const app = express();
@@ -25,5 +26,7 @@ app.get("/api/standings-db", getStandingsFromDB);
 
 app.get("/api/teams-db", getTeams);
 app.get("/api/teams-db/:teamId", getTeamById);
+
+app.get("/api/team-fixtures-db/:teamId", getTeamFixturesFromDB);
 
 app.listen(PORT,"0.0.0.0", () => console.log(`News proxy on ${PORT}`));
