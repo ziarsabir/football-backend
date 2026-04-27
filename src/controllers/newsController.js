@@ -226,6 +226,7 @@ export async function getLiveNews(req, res) {
     const itemsRaw = Array.isArray(channel?.item)
       ? channel.item
       : [channel?.item].filter(Boolean);
+      
 
     // Convert raw RSS items into clean JS objects
     let news = (itemsRaw || []).map((it) => {

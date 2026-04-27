@@ -44,4 +44,20 @@ db.exec(`
   )
 `);
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS teams (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    leagueId INTEGER NOT NULL,
+    season INTEGER NOT NULL,
+    teamId INTEGER NOT NULL,
+    teamName TEXT NOT NULL,
+    teamLogo TEXT,
+    country TEXT,
+    founded INTEGER,
+    venueName TEXT,
+    venueCity TEXT,
+    UNIQUE(leagueId, season, teamId)
+  )
+`);
+
 export default db;
