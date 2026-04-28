@@ -81,4 +81,19 @@ db.exec(`
   )
 `);
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS team_transfers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    teamId INTEGER NOT NULL,
+    playerName TEXT,
+    transferDate TEXT,
+    transferType TEXT,
+    transferFee TEXT,
+    fromTeamName TEXT,
+    toTeamName TEXT,
+    direction TEXT,
+    UNIQUE(teamId, playerName, transferDate, fromTeamName, toTeamName)
+  )
+`);
+
 export default db;
