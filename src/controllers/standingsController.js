@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import db from "../config/database.js";
-import { getStandingsFromDb } from "../models/standingsModel.js";
+import { getStandingsFromDb } from "../services/standingsService.js";
 
 
 export function getStandingsFromDB(req, res) {

@@ -1,6 +1,6 @@
 import "dotenv/config";
 import fetch from "node-fetch";
-import { insertOrReplaceStandingRow } from "../src/models/standingsModel.js";
+import { insertOrReplaceStandingRow } from "../src/services/standingsService.js";
 
 const API_KEY = process.env.API_KEY;
 const BASE_URL = "https://v3.football.api-sports.io";
