@@ -1,4 +1,4 @@
-import { getTeamTransfersFromDb } from "../models/teamTransfersModel.js";
+import { getTeamTransfersFromDb } from "../services/teamTransfersService.js";
 
 export function getTeamTransfersFromDB(req, res) {
   try {
