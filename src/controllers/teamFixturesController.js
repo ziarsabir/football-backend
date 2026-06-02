@@ -1,4 +1,4 @@
-import { getTeamFixturesFromDb } from "../models/teamFixturesModel.js";
+import { getTeamFixturesFromDb } from "../services/teamFixturesService.js";
 
 export function getTeamFixturesFromDB(req, res) {
   try {
