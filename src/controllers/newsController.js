@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { parseStringPromise as parseXml } from "xml2js"; 
-// Import functions from the model (this is where we interact with the database)
-import { getAllNews, getNewsBySource, insertNewsItem } from "../models/newsModel.js";
+// Import functions from the service (this is where we interact with the database)
+import { getAllNews, getNewsBySource, insertNewsItem } from "../services/newsService.js";
 
 // General football feeds (we'll keyword-filter)
 const FEEDS = {
