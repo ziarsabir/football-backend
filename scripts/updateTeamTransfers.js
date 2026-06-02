@@ -1,6 +1,6 @@
 import "dotenv/config";
 import fetch from "node-fetch";
-import { getTeamsFromDb } from "../src/models/teamsModel.js";
+import { getTeamsFromDb } from "../src/services/teamsService.js";
 import { insertOrReplaceTeamTransfer } from "../src/services/teamTransfersService.js";
 
 const API_KEY = process.env.API_KEY;

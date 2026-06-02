@@ -1,4 +1,4 @@
-import { getTeamsFromDb, getTeamByIdFromDb } from "../models/teamsModel.js";
+import { getTeamsFromDb, getTeamByIdFromDb } from "../services/teamsService.js";
 
 export function getTeams(req, res) {
   try {

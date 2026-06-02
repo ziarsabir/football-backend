@@ -1,6 +1,6 @@
 import "dotenv/config";
 import fetch from "node-fetch";
-import { insertOrReplaceTeam } from "../src/models/teamsModel.js";
+import { insertOrReplaceTeam } from "../src/services/teamsService.js";
 
 const API_KEY = process.env.API_KEY;
 const BASE_URL = "https://v3.football.api-sports.io";
