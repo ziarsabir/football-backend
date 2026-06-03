@@ -96,4 +96,17 @@ db.exec(`
   )
 `);
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS squads (
+    teamId INTEGER,
+    playerId INTEGER,
+    playerName TEXT,
+    age INTEGER,
+    number INTEGER,
+    position TEXT,
+    photo TEXT,
+    PRIMARY KEY (teamId, playerId)
+  )
+`);
+
 export default db;

@@ -9,6 +9,7 @@
     "update-teams": "node scripts/updateTeams.js",
     "update-team-fixtures": "node scripts/updateTeamFixtures.js",
     "update-team-transfers": "node scripts/updateTeamTransfers.js",
+    "update-squads": "node scripts/updateSquads.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
