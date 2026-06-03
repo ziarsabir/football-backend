@@ -8,6 +8,7 @@ import { getTeams, getTeamById } from "./src/controllers/teamsController.js";
 import { getTeamFixturesFromDB } from "./src/controllers/teamFixturesController.js";
 import { getTeamTransfersFromDB } from "./src/controllers/teamTransfersController.js";
 import { getSquadByTeam } from "./src/controllers/squadController.js";
+import { getSavedLiveFixtures, updateAndGetLiveFixtures } from "./src/controllers/liveFixturesController.js";
 
 
 const app = express();
@@ -34,5 +35,8 @@ app.get("/api/team-fixtures-db/:teamId", getTeamFixturesFromDB);
 app.get("/api/team-transfers-db/:teamId", getTeamTransfersFromDB);
 
 app.get("/api/squad-db/:teamId", getSquadByTeam);
+
+app.get("/api/live-fixtures", updateAndGetLiveFixtures);
+app.get("/api/live-fixtures-db", getSavedLiveFixtures);
 
 app.listen(PORT,"0.0.0.0", () => console.log(`News proxy on ${PORT}`));

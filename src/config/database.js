@@ -109,4 +109,24 @@ db.exec(`
   )
 `);
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS live_fixtures (
+    fixtureId INTEGER PRIMARY KEY,
+    fixtureDate TEXT,
+    statusShort TEXT,
+    statusLong TEXT,
+    elapsed INTEGER,
+    homeTeamId INTEGER,
+    homeTeamName TEXT,
+    awayTeamId INTEGER,
+    awayTeamName TEXT,
+    goalsHome INTEGER,
+    goalsAway INTEGER,
+    leagueId INTEGER,
+    leagueName TEXT,
+    leagueCountry TEXT,
+    updatedAt TEXT DEFAULT CURRENT_TIMESTAMP
+  )
+`);
+
 export default db;
