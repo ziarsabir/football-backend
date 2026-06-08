@@ -10,6 +10,7 @@
     "update-team-fixtures": "node scripts/updateTeamFixtures.js",
     "update-team-transfers": "node scripts/updateTeamTransfers.js",
     "update-squads": "node scripts/updateSquads.js",
+    "update-fixture-events": "node scripts/updateFixtureEvents.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

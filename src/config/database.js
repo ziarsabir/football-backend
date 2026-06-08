@@ -129,4 +129,23 @@ db.exec(`
   )
 `);
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS fixture_events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fixtureId INTEGER NOT NULL,
+    teamId INTEGER,
+    teamName TEXT,
+    playerId INTEGER,
+    playerName TEXT,
+    assistId INTEGER,
+    assistName TEXT,
+    eventTime INTEGER,
+    extraTime INTEGER,
+    type TEXT,
+    detail TEXT,
+    comments TEXT,
+    UNIQUE(fixtureId, teamId, playerId, eventTime, type, detail)
+  )
+`);
+
 export default db;
