@@ -148,4 +148,25 @@ db.exec(`
   )
 `);
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS player_statistics (
+    playerId INTEGER,
+    teamId INTEGER,
+    leagueId INTEGER,
+    season INTEGER,
+    playerName TEXT,
+    age INTEGER,
+    nationality TEXT,
+    photo TEXT,
+    position TEXT,
+    appearances INTEGER,
+    minutes INTEGER,
+    rating TEXT,
+    goals INTEGER,
+    assists INTEGER,
+    interceptions INTEGER,
+    PRIMARY KEY (playerId, teamId, leagueId, season)
+  )
+`);
+
 export default db;

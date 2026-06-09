@@ -11,6 +11,7 @@
     "update-team-transfers": "node scripts/updateTeamTransfers.js",
     "update-squads": "node scripts/updateSquads.js",
     "update-fixture-events": "node scripts/updateFixtureEvents.js",
+    "update-player-stats": "node scripts/updatePlayerStats.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
