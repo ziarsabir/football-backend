@@ -48,18 +48,24 @@ async function updateTeamTransfers() {
             direction = "OUT";
           }
 
+          // API-Football returns both transfer types and transfer fees
+          // inside the "type" property, so I separate them before saving.
+          const transferValue = transfer.type || "";
+
+          // I check for a currency symbol to determine whether the value is a fee.
+          const isFee = /€|£|\$/.test(transferValue);
+
           insertOrReplaceTeamTransfer({
             teamId: team.teamId,
             playerName,
             transferDate: transfer.date,
-            transferType: transfer.type,
-            transferFee:
-                //Convert fee into string first as SQL cannot directly store a javaScript object
-                transfer.fee === null || transfer.fee === undefined
-                    ? null
-                    : typeof transfer.fee === "object"
-                    ? JSON.stringify(transfer.fee)
-                    : String(transfer.fee),
+
+            // If the value contains a fee, there is no separate transfer type.
+            transferType: isFee ? null : transferValue,
+
+            // If the value contains money, I store it in the transferFee column.
+            transferFee: isFee ? transferValue : null,
+
             fromTeamName,
             toTeamName,
             direction,
