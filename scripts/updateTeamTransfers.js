@@ -37,6 +37,7 @@ async function updateTeamTransfers() {
         transferList.forEach((transfer) => {
           const fromTeamName = transfer.teams?.out?.name || "";
           const toTeamName = transfer.teams?.in?.name || "";
+      
 
           let direction = "OTHER";
 
