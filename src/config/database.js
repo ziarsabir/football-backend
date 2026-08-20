@@ -1,4 +1,4 @@
-// This file creates a SQLite database file called football.sqlite
+/// This file creates a SQLite database file called football.sqlite
 // Creates a news table if it does not already exist 
 
 import { DatabaseSync } from "node:sqlite";
@@ -92,7 +92,7 @@ db.exec(`
     fromTeamName TEXT,
     toTeamName TEXT,
     direction TEXT,
-    UNIQUE(teamId, playerName, transferDate, fromTeamName, toTeamName)
+    UNIQUE(teamId, playerName, fromTeamName, toTeamName)
   )
 `);
 
