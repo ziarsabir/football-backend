@@ -41,7 +41,7 @@ export function insertOrReplacePlayerStat(row) {
   );
 }
 
-export function getTeamLeadersFromDb(teamId, leagueId = 39, season = 2025) {
+export function getTeamLeadersFromDb(teamId, leagueId = 39, season = 2026) {
   const topGoalscorer = db.prepare(`
     SELECT *
     FROM player_statistics

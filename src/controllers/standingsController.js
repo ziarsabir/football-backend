@@ -4,7 +4,7 @@ import { getStandingsFromDb } from "../services/standingsService.js";
 
 
 export function getStandingsFromDB(req, res) {
-  const { league = 39, season = 2025 } = req.query;
+  const { league = 39, season = 2026 } = req.query;
 
   const rows = getStandingsFromDb(league, season);
 

@@ -14,7 +14,7 @@ const headers = {
 async function updateTeamTransfers() {
   try {
     const leagueId = 39;
-    const season = 2025;
+    const season = 2026;
 
     const teams = getTeamsFromDb(leagueId, season);
 

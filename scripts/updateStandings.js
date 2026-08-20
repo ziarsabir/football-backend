@@ -13,7 +13,7 @@ const headers = {
 async function updateStandings() {
   try {
     const leagueId = 39;
-    const season = 2025;
+    const season = 2026;
 
     console.log("Fetching latest standings...");
 

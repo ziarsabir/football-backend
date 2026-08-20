@@ -3,7 +3,7 @@ import { getTeamFixturesFromDb } from "../services/teamFixturesService.js";
 export function getTeamFixturesFromDB(req, res) {
   try {
     const { teamId } = req.params;
-    const season = req.query.season || 2025;
+    const season = req.query.season || 2026;
 
     const fixtures = getTeamFixturesFromDb(teamId, season);
 

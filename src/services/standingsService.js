@@ -50,7 +50,7 @@ export function insertOrReplaceStandingRow(row) {
 }
 
 // Reads standings back in rank order 
-export function getStandingsFromDb(leagueId = 39, season = 2025) {
+export function getStandingsFromDb(leagueId = 39, season = 2026) {
   const stmt = db.prepare(`
     SELECT *
     FROM standings

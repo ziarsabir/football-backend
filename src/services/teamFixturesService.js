@@ -39,7 +39,7 @@ export function insertOrReplaceTeamFixture(row) {
   );
 }
 
-export function getTeamFixturesFromDb(teamId, season = 2025) {
+export function getTeamFixturesFromDb(teamId, season = 2026) {
   const stmt = db.prepare(`
     SELECT *
     FROM team_fixtures

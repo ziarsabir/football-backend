@@ -29,7 +29,7 @@ export function insertOrReplaceTeam(row) {
   );
 }
 
-export function getTeamsFromDb(leagueId = 39, season = 2025) {
+export function getTeamsFromDb(leagueId = 39, season = 2026) {
   const stmt = db.prepare(`
     SELECT *
     FROM teams

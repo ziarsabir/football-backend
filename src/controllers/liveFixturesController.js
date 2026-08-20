@@ -17,7 +17,7 @@ const headers = {
 export async function updateAndGetLiveFixtures(req, res) {
   try {
     const leagueId = req.query.league || 39;
-    const season = req.query.season || 2025;
+    const season = req.query.season || 2026;
 
     const response = await fetch(
       `${BASE_URL}/fixtures?live=all&league=${leagueId}&season=${season}`,
