@@ -25,6 +25,9 @@ export async function updateAndGetLiveFixtures(req, res) {
     );
 
     const data = await response.json();
+    // Temporarily inspect the full API-Football response.
+    console.log("API-Football live response:", JSON.stringify(data, null, 2));
+    
     const fixtures = data?.response || [];
 
     clearLiveFixtures();
